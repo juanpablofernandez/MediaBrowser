@@ -61,7 +61,7 @@ func floorcgf(x: CGFloat) -> CGFloat {
     internal var previousStatusBarStyle: UIStatusBarStyle = .lightContent
 
     // Video
-    lazy internal var currentVideoPlayerViewController: AVPlayerViewController = {
+    lazy public var currentVideoPlayerViewController: AVPlayerViewController = {
         if #available(iOS 9.0, *) {
             $0.delegate = self
         }
