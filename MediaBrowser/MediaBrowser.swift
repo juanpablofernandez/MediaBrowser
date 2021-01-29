@@ -81,6 +81,9 @@ func floorcgf(x: CGFloat) -> CGFloat {
     /// UINavigationBar Text Color for MediaBrowser
     public var navigationBarTextColor = UIColor.white
     
+    /// UINavigationBar Button Color for MediaBrowser
+    public var navigationBarBtnColor = UIColor.white
+    
     /// UINavigationBar Background Color for MediaBrowser
     public var navigationBarBackgroundColor = UIColor.black
     
@@ -96,11 +99,20 @@ func floorcgf(x: CGFloat) -> CGFloat {
     /// UIToolBar Text Color for MediaBrowser
     public var toolbarTextColor = UIColor.white
     
+    /// UIToolBar Button Color for MediaBrowser
+    public var toolbarBtnColor = UIColor.white
+    
     /// UIToolBar Tint Color for MediaBrowser
     public var toolbarBarTintColor = UIColor.black.withAlphaComponent(0.5)
     
     /// UIToolBar Tint Background for MediaBrowser
     public var toolbarBackgroundColor = UIColor.black
+    
+    /// UIToolBar Style for MediaBrowser
+    public var toolbarStyle = UIBarStyle.black
+    
+    /// UIToolBar Translucent for MediaBrowser
+    public var toolbarTranslucent = true
     
     /// MediaBrowser has belonged to viewcontroller
     public var hasBelongedToViewController = false
@@ -380,8 +392,8 @@ func floorcgf(x: CGFloat) -> CGFloat {
         toolbar.barTintColor = toolbarBarTintColor
         toolbar.backgroundColor = toolbarBackgroundColor
         toolbar.alpha = toolbarAlpha
-        toolbar.barStyle = .blackTranslucent
-        toolbar.isTranslucent = true
+        toolbar.barStyle = toolbarStyle
+        toolbar.isTranslucent = toolbarTranslucent
         toolbar.autoresizingMask = [.flexibleTopMargin, .flexibleWidth]
 
 
@@ -764,7 +776,7 @@ func floorcgf(x: CGFloat) -> CGFloat {
         if let navBar = navigationController?.navigationBar {
             navBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:navigationBarTextColor]
             navBar.backgroundColor = navigationBarBackgroundColor
-            navBar.tintColor = navigationBarTextColor
+            navBar.tintColor = navigationBarBtnColor
             navBar.barTintColor = navigationBarTintColor
             navBar.shadowImage = nil
             navBar.isTranslucent = navigationBarTranslucent
