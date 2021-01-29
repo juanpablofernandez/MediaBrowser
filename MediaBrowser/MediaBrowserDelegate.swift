@@ -9,8 +9,7 @@
 import UIKit
 
 /// Required delegate to use MediaBrowser
-@objc
-public protocol MediaBrowserDelegate {
+public protocol MediaBrowserDelegate: NSObject {
     //MARK: Required methods
     
     /**
@@ -36,7 +35,7 @@ public protocol MediaBrowserDelegate {
      - Parameter mediaBrowser: MediaBrowser
      */
     func mediaBrowserDidFinishModalPresentation(mediaBrowser: MediaBrowser)
-
+    
     /**
      Optional protocol to show thumbnail. return media.
      Recommand small size
@@ -45,7 +44,7 @@ public protocol MediaBrowserDelegate {
      - Parameter index: Int
      */
     func thumbnail(for mediaBrowser: MediaBrowser, at index: Int) -> Media
-
+    
     /**
      Optional protocol to show captionView. return MediaCaptionView.
      
@@ -100,7 +99,7 @@ public protocol MediaBrowserDelegate {
      - Returns: Optional CGSize
      */
     func gridCellSize() -> CGSize
-
+    
     /**
      Optional protocol for access token
      */
@@ -111,9 +110,9 @@ public extension MediaBrowserDelegate {
     func mediaBrowserDidFinishModalPresentation(mediaBrowser: MediaBrowser) {
         mediaBrowser.dismiss(animated: true, completion: nil)
     }
-
+    
     func thumbnail(for mediaBrowser: MediaBrowser, at index: Int) -> Media { return Media() }
-
+    
     func captionView(for mediaBrowser: MediaBrowser, at index: Int) -> MediaCaptionView? { return nil }
     
     func didDisplayMedia(at index: Int, in mediaBrowser: MediaBrowser) { }
@@ -127,6 +126,6 @@ public extension MediaBrowserDelegate {
     func title(for mediaBrowser: MediaBrowser, at index: Int) -> String? { return nil }
     
     func gridCellSize() -> CGSize { return CGSize(width: 128, height: 128) }
-
+    
     func accessToken(for url: URL?) -> String? { return nil }
 }
