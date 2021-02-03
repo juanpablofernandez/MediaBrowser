@@ -498,13 +498,15 @@ func floorcgf(x: CGFloat) -> CGFloat {
                     style: .done,
                     target: self,
                     action: #selector(doneButtonPressed))
-
+                
+                doneButton = UIBarButtonItem(image: #imageLiteral(resourceName: "iphone-navbar-chevron"), style: .done, target: self, action: #selector(doneButtonPressed))
+                
                 // Set appearance
                 if let done = doneButton {
                     done.setBackgroundImage(nil, for: .normal, barMetrics: .default)
                     done.setBackgroundImage(nil, for: .highlighted, barMetrics: .compact)
                     
-                    self.navigationItem.rightBarButtonItem = done
+                    self.navigationItem.leftBarButtonItem = done
                 }
             } else {
                 // We're not first so show back button
