@@ -499,7 +499,7 @@ func floorcgf(x: CGFloat) -> CGFloat {
 //                    target: self,
 //                    action: #selector(doneButtonPressed))
                 
-                doneButton = UIBarButtonItem(image: #imageLiteral(resourceName: "iphone-navbar-chevron"), style: .done, target: self, action: #selector(doneButtonPressed))
+                doneButton = UIBarButtonItem(image: UIImage.imageForResourcePath(name: "iphone-navbar-chevron", inBundle: Bundle(for: MediaBrowser.self)), style: .done, target: self, action: #selector(doneButtonPressed))
                 
                 // Set appearance
                 if let done = doneButton {
