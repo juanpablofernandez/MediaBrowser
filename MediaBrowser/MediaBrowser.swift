@@ -493,18 +493,18 @@ func floorcgf(x: CGFloat) -> CGFloat {
         if let navi = navigationController {
             if navi.viewControllers.count > 0 && navi.viewControllers[0] == self {
                 // We're first on stack so show done button
-//                doneButton = UIBarButtonItem(
-//                    title: NSLocalizedString("Done", comment: ""),
-//                    style: .done,
-//                    target: self,
-//                    action: #selector(doneButtonPressed))
+                doneButton = UIBarButtonItem(
+                    title: NSLocalizedString("Done", comment: ""),
+                    style: .done,
+                    target: self,
+                    action: #selector(doneButtonPressed))
                 
-                doneButton = UIBarButtonItem(image: #imageLiteral(resourceName: "iphone-navbar-chevron"), style: .done, target: self, action: #selector(doneButtonPressed))
+//                doneButton = UIBarButtonItem(image: #imageLiteral(resourceName: "iphone-navbar-chevron"), style: .done, target: self, action: #selector(doneButtonPressed))
                 
                 // Set appearance
                 if let done = doneButton {
-//                    done.setBackgroundImage(nil, for: .normal, barMetrics: .default)
-//                    done.setBackgroundImage(nil, for: .highlighted, barMetrics: .compact)
+                    done.setBackgroundImage(nil, for: .normal, barMetrics: .default)
+                    done.setBackgroundImage(nil, for: .highlighted, barMetrics: .compact)
                     
                     self.navigationItem.leftBarButtonItem = done
                 }
