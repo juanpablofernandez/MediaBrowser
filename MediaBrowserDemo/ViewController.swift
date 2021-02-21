@@ -103,6 +103,12 @@ extension ViewController: MediaBrowserDelegate {
         selections[index] = selected
     }
     
+    func trashButtonPressed(at photoIndex: Int, in mediaBrowser: MediaBrowser, sender: Any? = nil) {
+        print("Trash. Remove from datasource")
+        mediaArray.remove(at: photoIndex)
+        mediaBrowser.reloadData()
+    }
+    
 //    func titleForPhotoAtIndex(index: Int, MediaBrowser: MediaBrowser) -> String {
 //    }
     

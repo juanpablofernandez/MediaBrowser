@@ -1890,8 +1890,6 @@ func floorcgf(x: CGFloat) -> CGFloat {
             }
         }
     }
-    
-    
 }
 
 extension MediaBrowser: UIActionSheetDelegate {
