@@ -18,13 +18,13 @@ class DemoData {
     
     class func multiplePhotoAndVideo() -> [Media] {
         var photos = [Media]()
-        var photo = localMediaPhoto(imageName: "MotionBookIntro1", caption: "MotionBook Intro 1")
+        var photo = localMediaPhoto(imageName: "MotionBookIntro1", caption: "")
         photos.append(photo)
         
-        photo = localMediaPhoto(imageName: "MotionBookIntro2", caption: "MotionBook Intro 2")
+        photo = localMediaPhoto(imageName: "MotionBookIntro2", caption: "")
         photos.append(photo)
         
-        photo = localMediaPhoto(imageName: "Atoms_thumb", caption: "Atom")
+        photo = localMediaPhoto(imageName: "Atoms_thumb", caption: "")
         photo.videoURL = URL(fileURLWithPath: Bundle.main.path(forResource: "Atoms", ofType: "mp4")!)
         photos.append(photo)
         

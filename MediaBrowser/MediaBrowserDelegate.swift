@@ -70,6 +70,14 @@ public protocol MediaBrowserDelegate: NSObject {
     func actionButtonPressed(at photoIndex: Int, in mediaBrowser: MediaBrowser, sender: Any?)
     
     /**
+     Optional protocol when need callback about trash button
+     
+     - Parameter photoIndex: Int
+     - Parameter mediaBrowser: MediaBrowser
+     */
+    func trashButtonPressed(at photoIndex: Int, in mediaBrowser: MediaBrowser, sender: Any?)
+    
+    /**
      Optional protocol when need callback about isMediaSelected
      
      - Parameter index: Int
@@ -118,6 +126,8 @@ public extension MediaBrowserDelegate {
     func didDisplayMedia(at index: Int, in mediaBrowser: MediaBrowser) { }
     
     func actionButtonPressed(at photoIndex: Int, in mediaBrowser: MediaBrowser, sender: Any? = nil) { mediaBrowser.defaultActionForMedia(atIndex: photoIndex) }
+    
+    func trashButtonPressed(at photoIndex: Int, in mediaBrowser: MediaBrowser, sender: Any? = nil) { }
     
     func isMediaSelected(at index: Int, in mediaBrowser: MediaBrowser) -> Bool { return false }
     

@@ -43,6 +43,7 @@ func floorcgf(x: CGFloat) -> CGFloat {
 	internal var previousButton: UIBarButtonItem?
     internal var nextButton: UIBarButtonItem?
     internal var actionButton: UIBarButtonItem?
+    internal var trashButton: UIBarButtonItem?
     internal var doneButton: UIBarButtonItem?
     
     // Grid
@@ -125,6 +126,9 @@ func floorcgf(x: CGFloat) -> CGFloat {
     
     /// Display action button (share)
     public var displayActionButton = true
+    
+    /// Display trash button (trash)
+    public var displayTrashButton = true
     
     /// Make status bar not hide
     public var leaveStatusBarAlone = false
@@ -429,6 +433,13 @@ func floorcgf(x: CGFloat) -> CGFloat {
                 action: #selector(actionButtonPressed(_:)))
         }
         
+        if displayTrashButton {
+            trashButton = UIBarButtonItem(
+            barButtonSystemItem: UIBarButtonItem.SystemItem.trash,
+            target: self,
+            action: #selector(trashButtonPressed(_:)))
+        }
+        
         reloadData()
         
         if enableSwipeToDismiss {
@@ -504,7 +515,7 @@ func floorcgf(x: CGFloat) -> CGFloat {
                     done.setBackgroundImage(nil, for: .normal, barMetrics: .default)
                     done.setBackgroundImage(nil, for: .highlighted, barMetrics: .compact)
                     
-                    self.navigationItem.rightBarButtonItem = done
+                    self.navigationItem.leftBarButtonItem = done
                 }
             } else {
                 // We're not first so show back button
@@ -561,8 +572,8 @@ func floorcgf(x: CGFloat) -> CGFloat {
         }
 
         // Right - Action
-        if actionButton != nil && !(!hasItems && nil == navigationItem.rightBarButtonItem) {
-            items.append(actionButton!)
+        if actionButton != nil && !hasItems {
+            items.insert(actionButton!, at: 0)
         } else {
             // We're falset showing the toolbar so try and show in top right
             if actionButton != nil {
@@ -572,6 +583,10 @@ func floorcgf(x: CGFloat) -> CGFloat {
                 }
             }
             items.append(fixedSpace)
+        }
+        
+        if trashButton != nil && !hasItems {
+           items.append(trashButton!)
         }
 
         // Toolbar visibility
@@ -1832,6 +1847,13 @@ func floorcgf(x: CGFloat) -> CGFloat {
         }
     }
     
+    @objc func trashButtonPressed(_ sender: Any) {
+        // Let delegate handle things
+        if let d = delegate {
+            d.trashButtonPressed(at: currentPageIndex, in: self, sender: sender)
+        }
+    }
+    
     internal func defaultActionForMedia(atIndex index: Int) {
         // Only react when image has loaded
         if let media = mediaAtIndex(index: index) {
@@ -1840,6 +1862,8 @@ func floorcgf(x: CGFloat) -> CGFloat {
                 var items: [Any] = [Any]()
                 if let videoUrl = media.videoURL {
                     items.append(videoUrl)
+                } else if let imageUrl = media.imageURL {
+                    items.append(imageUrl)
                 } else if let image = media.underlyingImage {
                     items.append(image)
                 }
@@ -1866,6 +1890,8 @@ func floorcgf(x: CGFloat) -> CGFloat {
             }
         }
     }
+    
+    
 }
 
 extension MediaBrowser: UIActionSheetDelegate {

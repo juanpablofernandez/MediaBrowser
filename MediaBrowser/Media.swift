@@ -107,6 +107,13 @@ open class Media: NSObject {
             return self._videoURL
         }
     }
+    
+    /// get photo URL
+    public var imageURL: URL? {
+        get {
+            return self.photoURL
+        }
+    }
 
     func setVideoURL(url: URL?) {
         self._videoURL = url
